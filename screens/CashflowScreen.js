@@ -63,6 +63,7 @@ class CashflowScreen extends Component {
             let params = page[1].split('&');
             if (params[2] !== undefined) {
               let tempOrderId = params[2].split('=');
+
               if (pageName === 'int-cashflow_return_failed.php') {
                 Alert.alert(
                   'Error',
@@ -73,7 +74,8 @@ class CashflowScreen extends Component {
                   },
                 );
                 this.props.navigation.navigate('Checkout');
-              } else if (pageName === 'int-cashflow_return_cancel.php') {
+              }
+              if (pageName === 'int-cashflow_return_cancelled.php') {
                 Alert.alert(
                   'Error',
                   'Payment Failed. if you wish you can retry.',
@@ -83,7 +85,8 @@ class CashflowScreen extends Component {
                   },
                 );
                 this.props.navigation.navigate('Checkout');
-              } else if (pageName === 'int-cashflow_return_success.php') {
+              }
+              if (pageName === 'int-cashflow_return_success.php') {
                 this.props.checkPaymentStatus(
                   this.props.auth.uniqueId,
                   tempOrderId[1],
